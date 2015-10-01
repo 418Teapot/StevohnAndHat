@@ -4,7 +4,7 @@ using System.Collections;
 public class PlayerControl : MonoBehaviour {
 
 	public float moveSpeed = 5.0f;
-    public float jumpForce = 5.0f;
+    public float jumpForce = 15.0f;
 
 	private Rigidbody2D rigid;
 	private Animator anim;
@@ -36,26 +36,34 @@ public class PlayerControl : MonoBehaviour {
 
         float horizontalMove;
 
-        if (wiimoteEnabled)
-        {
+        if (wiimoteEnabled){
             horizontalMove = wiiInput.getX();
             anim.SetFloat("WalkSpeed", Mathf.Abs(horizontalMove));
 
-            if(wiiInput.getJump() > 0 && jumpCount == 0)
-            {
+          	if(wiiInput.getJump() > 0 && jumpCount == 0)
+			{
                 rigid.AddForce(Vector2.up * jumpForce);
                 jumpCount++;
                 Debug.Log("Jump "+jumpCount);
-            } else
-            {
+            } else {
                 jumpCount = 0;
                 Debug.Log("Jump " + jumpCount);
             }
 
-        } else
-        {
+        } else {
+			//If wiiMote isn't enabled, and you want to controle with keyboard.
             horizontalMove = Input.GetAxis("Horizontal");
             anim.SetFloat("WalkSpeed", Mathf.Abs(horizontalMove));
+
+			if(Input.GetButtonDown("Jump") && jumpCount == 0){
+				rigid.AddForce(Vector2.up * jumpForce);
+				jumpCount++;
+				Debug.Log("Jump "+jumpCount);
+			} else {
+				jumpCount = 0;
+				//Debug.Log("Jump " + jumpCount);
+			}
+
         }
 
         if(horizontalMove < 0 && !facingLeft)

@@ -2,13 +2,14 @@
 using System.Collections;
 
 public class CameraFollow : MonoBehaviour {
-	public float distance = 6.0f;
+	public float distance = 15.0f;
 	
 	private GameObject player;
 	
 	// Use this for initialization
 	void Start () {
 		player = GameObject.FindWithTag ("Player");
+		Debug.Log("Player found" + player );
 	}
 	
 	// Update is called once per frame
