@@ -3,7 +3,8 @@ using System.Collections;
 
 public class CameraFollow : MonoBehaviour {
 	public float distance;
-    public float yOffset;
+    private float yOffset;
+    public float yOffsetAtGround;
 	
 	private GameObject player;
 	
@@ -15,7 +16,7 @@ public class CameraFollow : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        yOffset = 9 - player.transform.position.y;
+        yOffset = yOffsetAtGround - player.transform.position.y;
         if (yOffset<0) yOffset = 0;
 		transform.position = new Vector3 (player.transform.position.x, player.transform.position.y+yOffset, -distance);
 	}
