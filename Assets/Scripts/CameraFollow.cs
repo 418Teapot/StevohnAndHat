@@ -2,9 +2,9 @@
 using System.Collections;
 
 public class CameraFollow : MonoBehaviour {
-	public float distance;
+	public float distance=15;
     private float yOffset;
-    public float yOffsetAtGround;
+    public float yOffsetAtGround=9;
 	
 	private GameObject player;
 	
