@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Hat
+  - Mechanics
+  - Enemy
+  - Ground
+  - EnemyEyes
   layers:
   - Default
   - TransparentFX
