@@ -339,7 +339,7 @@ MonoBehaviour:
   hat: {fileID: 122462, guid: 093ee7c2a56bad9449117998e1acc707, type: 2}
   muzzlePoint: {fileID: 483778}
   realHat: {fileID: 137224}
-  hatParticles: {fileID: 138624, guid: 8326692d79edc394091d3a6dc31cd44d, type: 2}
+  hatParticles: {fileID: 132002, guid: 48ddcf082ab3b35498e3b09903fdb77d, type: 2}
   force: 2500
   lifeTime: 5
 --- !u!114 &11432658
@@ -584,7 +584,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: hatParticles
+      value: 
+      objectReference: {fileID: 132002, guid: 48ddcf082ab3b35498e3b09903fdb77d, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 140472}

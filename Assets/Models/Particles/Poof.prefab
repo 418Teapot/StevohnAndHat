@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 433654}
   - 198: {fileID: 19890752}
   - 199: {fileID: 19974952}
+  - 114: {fileID: 11440050}
   m_Layer: 0
   m_Name: Poof
   m_TagString: Untagged
@@ -27,6 +28,7 @@ GameObject:
   - 4: {fileID: 419036}
   - 198: {fileID: 19881926}
   - 199: {fileID: 19963104}
+  - 114: {fileID: 11477342}
   m_Layer: 0
   m_Name: DustPoof
   m_TagString: Untagged
@@ -59,6 +61,30 @@ Transform:
   - {fileID: 419036}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!114 &11440050
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 132002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0642035224a156c44b7a42670179a0cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifeTime: 2
+--- !u!114 &11477342
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 145872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0642035224a156c44b7a42670179a0cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifeTime: 2
 --- !u!198 &19881926
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -69,7 +95,7 @@ ParticleSystem:
   startDelay: 0
   speed: 1
   randomSeed: 0
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 1
   moveWithTransform: 1
@@ -1122,7 +1148,7 @@ ParticleSystem:
   startDelay: 0
   speed: 1
   randomSeed: 0
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 1
   moveWithTransform: 1
@@ -2266,6 +2292,14 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[1].outSlope
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: lifeTime
       value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []

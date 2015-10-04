@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 455026}
   - 198: {fileID: 19889348}
   - 199: {fileID: 19967572}
+  - 114: {fileID: 11480890}
   m_Layer: 0
   m_Name: HatDust
   m_TagString: Untagged
@@ -29,6 +30,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!114 &11480890
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 138624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0642035224a156c44b7a42670179a0cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifeTime: 5
 --- !u!198 &19889348
 ParticleSystem:
   m_ObjectHideFlags: 1

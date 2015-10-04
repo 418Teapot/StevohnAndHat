@@ -16,6 +16,24 @@ public class HatControl : MonoBehaviour {
 
     private bool madeItBig = false;
 
+    // ny wait for thing yes!
+    private float __gWaitSystem;
+
+    void TappedWaitForSecondsOrTap()
+    {
+        __gWaitSystem = 0.0f;
+    }
+
+    IEnumerator WaitForSecondsOrTap(float seconds)
+    {
+        __gWaitSystem = seconds;
+        while( __gWaitSystem > 0.0f)
+        {
+            __gWaitSystem -= Time.deltaTime;
+            yield return null;
+        }
+    }
+
     public void EnableHat()
     {
         hasHat = true;
@@ -23,17 +41,19 @@ public class HatControl : MonoBehaviour {
         realHat.GetComponent<SpriteRenderer>().enabled = true;
         Destroy(particlesHat, 5); // clean up ;)
     }
-    
-	void FixedUpdate () {
 
-        if(Input.GetButtonDown("Fire1") && hasHat)
+    void FixedUpdate()
+    {
+
+        if (Input.GetButtonDown("Fire1") && hasHat)
         {
-            Debug.Log("FIRE!");
-            hasHat = false;            
-            if(realHat == null)
+            hasHat = false;
+            Debug.Log("FIRE!");            
+            if (realHat == null)
             {
                 Debug.Log("NO HAT!");
-            } else
+            }
+            else
             {
                 Debug.Log(realHat);//realHat.active = false;
                 realHat.GetComponent<SpriteRenderer>().enabled = false;
@@ -42,7 +62,7 @@ public class HatControl : MonoBehaviour {
             mousePos.z = transform.position.z - Camera.main.transform.position.z;
             mousePos = Camera.main.ScreenToWorldPoint(mousePos);
             Quaternion rotation = Quaternion.FromToRotation(Vector3.up, mousePos - transform.position);
-            GameObject instantiatedHat = (GameObject) Instantiate(hat, muzzlePoint.position, rotation);
+            GameObject instantiatedHat = (GameObject)Instantiate(hat, muzzlePoint.position, rotation);
             Rigidbody2D hatBody = instantiatedHat.GetComponent<Rigidbody2D>();
 
 
@@ -58,8 +78,12 @@ public class HatControl : MonoBehaviour {
                         }*/
 
             StartCoroutine(AutoDestroy(instantiatedHat));
+        } else if (Input.GetButtonDown("Fire1") && !hasHat && !madeItBig)
+        {
+            Debug.Log("ENLARGE ME!");
+            madeItBig = true;
+            //StopCoroutine(AutoDestroy());
         }
-        
     }
 
     IEnumerator AutoDestroy(GameObject hat)
