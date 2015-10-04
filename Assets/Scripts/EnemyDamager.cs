@@ -11,6 +11,7 @@ public class EnemyDamager : MonoBehaviour {
         if(col.tag == "Enemy")
         {
             col.gameObject.GetComponent<EnemyControl>().TakeDamage(damage);
+            GameObject.FindWithTag("Player").GetComponent<HatControl>().EnableHat();
             Destroy(this.gameObject);   
         }
     }
