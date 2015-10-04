@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - Ground
   - EnemyEyes
+  - Table
   layers:
   - Default
   - TransparentFX
