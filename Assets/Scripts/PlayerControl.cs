@@ -11,6 +11,7 @@ public class PlayerControl : MonoBehaviour {
 	private Transform playerModel;
     public bool wiimoteEnabled = false;
     private int jumpCount = 0;
+	private bool grounded = true;
 
     private WiiMoteInputReader wiiInput;
 
@@ -40,14 +41,10 @@ public class PlayerControl : MonoBehaviour {
             horizontalMove = wiiInput.getX();
             anim.SetFloat("WalkSpeed", Mathf.Abs(horizontalMove));
 
-          	if(wiiInput.getJump() > 0 && jumpCount == 0)
+          	if(wiiInput.getJump() > 0 && grounded)
 			{
                 rigid.AddForce(Vector2.up * jumpForce);
-                jumpCount++;
                 Debug.Log("Jump "+jumpCount);
-            } else {
-                jumpCount = 0;
-                Debug.Log("Jump " + jumpCount);
             }
 
         } else {
@@ -55,24 +52,17 @@ public class PlayerControl : MonoBehaviour {
             horizontalMove = Input.GetAxis("Horizontal");
             anim.SetFloat("WalkSpeed", Mathf.Abs(horizontalMove));
 
-			if(Input.GetButtonDown("Jump") && jumpCount == 0){
+			if(Input.GetButtonDown("Jump") && grounded){
 				rigid.AddForce(Vector2.up * jumpForce);
-				jumpCount++;
 				Debug.Log("Jump "+jumpCount);
-			} else {
-				jumpCount = 0;
-				//Debug.Log("Jump " + jumpCount);
 			}
-
         }
 
-        if(horizontalMove < 0 && !facingLeft)
-        {
+        if(horizontalMove < 0 && !facingLeft){
             flip();
             facingLeft = true;
             facingRight = false;
-        } else if(horizontalMove > 0 && !facingRight)
-        {
+        } else if(horizontalMove > 0 && !facingRight){
             flip();
             facingRight = true;
             facingLeft = false;
@@ -90,6 +80,14 @@ public class PlayerControl : MonoBehaviour {
 		
 
 		rigid.velocity = new Vector2(horizontalMove * moveSpeed, rigid.velocity.y);	
+	}
+
+	void OnCollisionEnter2D(Collision2D collider){
+		grounded = true;
+	}
+
+	void OnCollisionExit2D(Collision2D collider){
+		grounded = false;
 	}
 
 
