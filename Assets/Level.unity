@@ -807,7 +807,7 @@ Rigidbody2D:
   m_GameObject: {fileID: 730224325}
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: .0500000007
+  m_AngularDrag: 0
   m_GravityScale: 2
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -826,7 +826,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 7
-  jumpForce: 700
+  jumpForce: 500
   wiimoteEnabled: 0
 --- !u!114 &730224333
 MonoBehaviour:
@@ -841,7 +841,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 10
   recoverTime: .100000001
-  damage: 1
+  damage: 10
 --- !u!1 &748073621
 GameObject:
   m_ObjectHideFlags: 0
@@ -2072,7 +2072,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbd8975c29656478e90129e1dfe61e8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distance: 6
+  distance: 15
 --- !u!1 &1495476455
 GameObject:
   m_ObjectHideFlags: 0
@@ -2863,7 +2863,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1856041526}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -17.25, z: 0}
+  m_LocalPosition: {x: 0, y: -17.25, z: -3}
   m_LocalScale: {x: 200, y: 30, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
