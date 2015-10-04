@@ -52,9 +52,9 @@ public class PlayerHealth : MonoBehaviour {
 	}
 
 	IEnumerator Respawn() {
-		print(Time.time);
+		//print(Time.time);
 		yield return new WaitForSeconds(2);
-		print(Time.time);
+		//print(Time.time);
 		GetComponent<PlayerControl>().enabled = true;
 		foreach (CircleCollider2D cc in GetComponents<CircleCollider2D>()){
 			cc.enabled = true;

@@ -70,6 +70,8 @@ public class EnemyControl : MonoBehaviour
 
         StartCoroutine(animDmg());
 
+        GetComponent<AudioSource>().Play();
+
         if(health <= 0)
         {
             Destroy(this.gameObject);

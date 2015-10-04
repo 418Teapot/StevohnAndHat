@@ -18,6 +18,7 @@ public class PlayerControl : MonoBehaviour {
 
     private bool facingLeft = false;
     private bool facingRight = true;
+    private bool dancing = false;
 
 	void Start(){
 		rigid = GetComponent<Rigidbody2D>();
@@ -66,6 +67,16 @@ public class PlayerControl : MonoBehaviour {
             flip();
             facingRight = true;
             facingLeft = false;
+        }
+
+        if(horizontalMove == 0 && Input.GetButtonDown("Dance"))
+        {
+            dancing = true;
+            anim.SetBool("Dancing", dancing);
+        } else
+        {
+            dancing = false;
+            anim.SetBool("Dancing", dancing);
         }
 
 		/*if(horizontalMove > 0){

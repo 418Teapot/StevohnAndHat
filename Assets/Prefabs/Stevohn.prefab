@@ -343,8 +343,8 @@ MonoBehaviour:
   bigHatParicles: {fileID: 138624, guid: 8326692d79edc394091d3a6dc31cd44d, type: 2}
   hatParticles: {fileID: 132002, guid: 48ddcf082ab3b35498e3b09903fdb77d, type: 2}
   force: 2500
-  lifeTime: 5
-  largeHatTime: 10
+  lifeTime: 2.5
+  largeHatTime: 2.5
 --- !u!114 &11432658
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -371,7 +371,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 15
-  jumpForce: 500
+  jumpForce: 750
   wiimoteEnabled: 0
 --- !u!212 &21209162
 SpriteRenderer:
