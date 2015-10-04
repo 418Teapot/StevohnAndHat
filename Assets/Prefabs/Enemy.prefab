@@ -224,6 +224,7 @@ MonoBehaviour:
   patrolDistanceX: 25
   health: 20
   deathParticles: {fileID: 138624, guid: 8326692d79edc394091d3a6dc31cd44d, type: 2}
+  myMinHeight: 0
 --- !u!212 &21227156
 SpriteRenderer:
   m_ObjectHideFlags: 1

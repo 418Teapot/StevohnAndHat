@@ -91,6 +91,7 @@ public class HatControl : MonoBehaviour {
             Debug.Log("ENLARGE ME!");
             GameObject.Find("AudioClips/Poof").GetComponent<AudioSource>().Play();
             GameObject bigHatParticleSys = (GameObject) Instantiate(bigHatParicles, instantiatedHat.transform.position, instantiatedHat.transform.rotation);
+
             Destroy(bigHatParticleSys, 5);
             superHat = (GameObject) Instantiate(bigHat, instantiatedHat.transform.position, instantiatedHat.transform.rotation);
             Destroy(instantiatedHat);
