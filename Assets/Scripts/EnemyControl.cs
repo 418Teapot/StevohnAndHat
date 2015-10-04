@@ -9,7 +9,8 @@ public class EnemyControl : MonoBehaviour
     public float chaseSpeed = 8.0f;
     public float spottingDistance = 10f;
     public float patrolDistanceX = 25f;
-
+    public int health = 20;
+    public GameObject deathParticles;
     
     private Rigidbody2D rigid;
     private Transform enemyModel;
@@ -63,7 +64,29 @@ public class EnemyControl : MonoBehaviour
         rigid.velocity = vectorTowardsPlayer.normalized * chaseSpeed; //move towards player
     }
 
-    
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+
+        StartCoroutine(animDmg());
+
+        if(health <= 0)
+        {
+            Destroy(this.gameObject);
+            Instantiate(deathParticles, transform.position, transform.rotation);
+        }
+    }
+
+    IEnumerator animDmg()
+    {
+        Vector3 origScale = transform.localScale;
+        Vector3 dmgScale = new Vector3(1.5f, 1.5f, 1.5f);
+        transform.localScale = dmgScale;
+        yield return new WaitForSeconds(0.1f);
+        transform.localScale = origScale;
+        StopCoroutine(animDmg());
+    }
+
     void FixedUpdate()
     {
 

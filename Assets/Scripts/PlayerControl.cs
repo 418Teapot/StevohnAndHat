@@ -82,6 +82,20 @@ public class PlayerControl : MonoBehaviour {
 		rigid.velocity = new Vector2(horizontalMove * moveSpeed, rigid.velocity.y);	
 	}
 
+<<<<<<< HEAD
+=======
+    public bool IsFacingRight()
+    {
+        if (facingRight)
+        {
+            return true;
+        } else
+        {
+            return false;
+        }
+    }
+
+>>>>>>> hatman
 	void OnCollisionEnter2D(Collision2D collider){
 		grounded = true;
 	}

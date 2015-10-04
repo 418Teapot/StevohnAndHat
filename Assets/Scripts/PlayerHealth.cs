@@ -25,7 +25,11 @@ public class PlayerHealth : MonoBehaviour {
 
 	}
 
+<<<<<<< HEAD
 	void OnCollisionEnter2D (Collision2D col){
+=======
+	void OnTriggerEnter2D (Collider2D col){
+>>>>>>> hatman
 		if(col.gameObject.tag == "Enemy"){
 			if (Time.time > lastHitTime + recoverTime){
 				health = health-damage;
