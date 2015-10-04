@@ -3562,6 +3562,10 @@ Prefab:
       propertyPath: force
       value: 20000
       objectReference: {fileID: 0}
+    - target: {fileID: 400160, guid: 93d93bf358657ae46acff9e5a7c38e3d, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 93d93bf358657ae46acff9e5a7c38e3d, type: 2}
   m_IsPrefabParent: 0
@@ -3808,7 +3812,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: be517c33a2a43704f8cf721a0bf30d28, type: 3}
+  m_audioClip: {fileID: 8300000, guid: fa99dbdd68636c74197e9a075abdeb64, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
