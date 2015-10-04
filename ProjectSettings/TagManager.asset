@@ -7,8 +7,11 @@ TagManager:
   - Hat
   - Mechanics
   - Enemy
+<<<<<<< HEAD
   - Ground
   - EnemyEyes
+=======
+>>>>>>> SilasDerp
   layers:
   - Default
   - TransparentFX
