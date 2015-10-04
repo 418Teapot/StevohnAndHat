@@ -5,17 +5,23 @@ using UnityEngine.UI;
 public class HatControl : MonoBehaviour {
 
     public GameObject hat;
+    public GameObject bigHat;
+
     public Transform muzzlePoint;
     public GameObject realHat;
+
+    public GameObject bigHatParicles;
 
     public GameObject hatParticles;
 
     public float force = 2500.0f;
     public float lifeTime = 5.0f;
+    public float largeHatTime = 10.0f;
     private bool hasHat = true;
 
     private bool madeItBig = false;
-
+    private GameObject instantiatedHat;
+    private GameObject superHat;
     // ny wait for thing yes!
     private float __gWaitSystem;
 
@@ -37,6 +43,7 @@ public class HatControl : MonoBehaviour {
     public void EnableHat()
     {
         hasHat = true;
+        madeItBig = false;
         GameObject particlesHat = (GameObject) Instantiate(hatParticles, muzzlePoint.position, muzzlePoint.rotation);        
         realHat.GetComponent<SpriteRenderer>().enabled = true;
         Destroy(particlesHat, 5); // clean up ;)
@@ -62,7 +69,7 @@ public class HatControl : MonoBehaviour {
             mousePos.z = transform.position.z - Camera.main.transform.position.z;
             mousePos = Camera.main.ScreenToWorldPoint(mousePos);
             Quaternion rotation = Quaternion.FromToRotation(Vector3.up, mousePos - transform.position);
-            GameObject instantiatedHat = (GameObject)Instantiate(hat, muzzlePoint.position, rotation);
+            instantiatedHat = (GameObject)Instantiate(hat, muzzlePoint.position, rotation);
             Rigidbody2D hatBody = instantiatedHat.GetComponent<Rigidbody2D>();
 
 
@@ -81,9 +88,21 @@ public class HatControl : MonoBehaviour {
         } else if (Input.GetButtonDown("Fire1") && !hasHat && !madeItBig)
         {
             Debug.Log("ENLARGE ME!");
+
+            GameObject bigHatParticleSys = (GameObject) Instantiate(bigHatParicles, instantiatedHat.transform.position, instantiatedHat.transform.rotation);
+            Destroy(bigHatParticleSys, 5);
+            superHat = (GameObject) Instantiate(bigHat, instantiatedHat.transform.position, instantiatedHat.transform.rotation);
+            Destroy(instantiatedHat);
             madeItBig = true;
             //StopCoroutine(AutoDestroy());
         }
+    }
+
+    IEnumerator AutoDestroyLarge()
+    {
+        yield return new WaitForSeconds(largeHatTime);        
+        EnableHat();
+        Destroy(superHat);       
     }
 
     IEnumerator AutoDestroy(GameObject hat)
@@ -92,6 +111,9 @@ public class HatControl : MonoBehaviour {
         if (!madeItBig) {
             EnableHat();
             Destroy(hat);
+        } else
+        {
+            StartCoroutine(AutoDestroyLarge());
         }
     }
 }
