@@ -11,6 +11,8 @@ public class EnemyControl : MonoBehaviour
     public float patrolDistanceX = 25f;
     public int health = 20;
     public GameObject deathParticles;
+
+    public float myMinHeight;
     
     private Rigidbody2D rigid;
     private Transform enemyModel;
@@ -70,6 +72,8 @@ public class EnemyControl : MonoBehaviour
 
         StartCoroutine(animDmg());
 
+        GetComponent<AudioSource>().Play();
+
         if(health <= 0)
         {
             Destroy(this.gameObject);
@@ -104,9 +108,9 @@ public class EnemyControl : MonoBehaviour
         else transform.localScale = new Vector2(-1*Mathf.Abs(transform.localScale.x), transform.localScale.y);
 
 
-        if (rigid.transform.position.y < -0.8f) //keep above ground
+        if (rigid.transform.position.y < myMinHeight) //keep above ground
         {
-            rigid.transform.position = new Vector2(rigid.transform.position.x, -0.7f);
+            rigid.transform.position = new Vector2(rigid.transform.position.x, myMinHeight);
             rigid.velocity = new Vector2(rigid.velocity.x, 0);
         }
 

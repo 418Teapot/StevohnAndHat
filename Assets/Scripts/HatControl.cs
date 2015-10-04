@@ -13,7 +13,7 @@ public class HatControl : MonoBehaviour {
     public GameObject bigHatParicles;
 
     public GameObject hatParticles;
-
+    
     public float force = 2500.0f;
     public float lifeTime = 5.0f;
     public float largeHatTime = 10.0f;
@@ -64,6 +64,7 @@ public class HatControl : MonoBehaviour {
             {
                 Debug.Log(realHat);//realHat.active = false;
                 realHat.GetComponent<SpriteRenderer>().enabled = false;
+                GameObject.Find("AudioClips/Throw").GetComponent<AudioSource>().Play();
             }
             Vector3 mousePos = Input.mousePosition;
             mousePos.z = transform.position.z - Camera.main.transform.position.z;
@@ -88,7 +89,7 @@ public class HatControl : MonoBehaviour {
         } else if (Input.GetButtonDown("Fire1") && !hasHat && !madeItBig)
         {
             Debug.Log("ENLARGE ME!");
-
+            GameObject.Find("AudioClips/Poof").GetComponent<AudioSource>().Play();
             GameObject bigHatParticleSys = (GameObject) Instantiate(bigHatParicles, instantiatedHat.transform.position, instantiatedHat.transform.rotation);
             Destroy(bigHatParticleSys, 5);
             superHat = (GameObject) Instantiate(bigHat, instantiatedHat.transform.position, instantiatedHat.transform.rotation);
@@ -98,11 +99,19 @@ public class HatControl : MonoBehaviour {
         }
     }
 
+    public void KillTheHat()
+    {
+        StopAllCoroutines();
+        EnableHat();
+        GameObject.Find("AudioClips/Poof").GetComponent<AudioSource>().Play();
+    }
+
     IEnumerator AutoDestroyLarge()
     {
         yield return new WaitForSeconds(largeHatTime);        
         EnableHat();
-        Destroy(superHat);       
+        Destroy(superHat);
+        GameObject.Find("AudioClips/Poof").GetComponent<AudioSource>().Play();
     }
 
     IEnumerator AutoDestroy(GameObject hat)
@@ -111,6 +120,7 @@ public class HatControl : MonoBehaviour {
         if (!madeItBig) {
             EnableHat();
             Destroy(hat);
+            GameObject.Find("AudioClips/Poof").GetComponent<AudioSource>().Play();
         } else
         {
             StartCoroutine(AutoDestroyLarge());
