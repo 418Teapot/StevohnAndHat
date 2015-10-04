@@ -39,7 +39,12 @@ public class PlayerHealth : MonoBehaviour {
 					foreach (CircleCollider2D cc in GetComponents<CircleCollider2D>()){
 						cc.enabled = false;
 					}
-					GameObject.FindWithTag("MainCamera").GetComponent<CameraFollow>().enabled = false;
+                    foreach (BoxCollider2D bc in GetComponents<BoxCollider2D>())
+                    {
+                        bc.enabled = false;
+
+                    }
+                    GameObject.FindWithTag("MainCamera").GetComponent<CameraFollow>().enabled = false;
 
 					//Respawn here, look under; IEnumerator Respawn()
 					StartCoroutine(Respawn());
@@ -59,6 +64,11 @@ public class PlayerHealth : MonoBehaviour {
 		foreach (CircleCollider2D cc in GetComponents<CircleCollider2D>()){
 			cc.enabled = true;
 		}
+        foreach(BoxCollider2D bc in GetComponents<BoxCollider2D>())
+        {
+            bc.enabled = true;
+
+        }
 		GameObject.FindWithTag("Player").transform.position = new Vector3(0,2,0);
 		GameObject.FindWithTag("MainCamera").GetComponent<CameraFollow>().enabled = true;
 

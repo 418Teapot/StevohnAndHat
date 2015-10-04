@@ -35,7 +35,8 @@ public class PlayerControl : MonoBehaviour {
     }
 
 	void FixedUpdate(){
-
+        //grounded = Physics2D.Linecast(transform.position, transform.Find("groundCheck").transform.position, 1 << LayerMask.NameToLayer("Ground"));
+        //Debug.Log("Grnd: " + grounded);
         float horizontalMove;
 
         if (wiimoteEnabled){
@@ -79,7 +80,7 @@ public class PlayerControl : MonoBehaviour {
             anim.SetBool("Dancing", dancing);
         }
 
-		/*if(horizontalMove > 0){
+        /*if(horizontalMove > 0){
 			Vector3 scale = transform.localScale;
 			scale.x *= 1;
 			transform.localScale = scale;
@@ -88,8 +89,8 @@ public class PlayerControl : MonoBehaviour {
 			scale.x *= -1;
 			transform.localScale = scale;
 		}*/
-		
 
+        Debug.Log("Grnd: " + grounded);
 		rigid.velocity = new Vector2(horizontalMove * moveSpeed, rigid.velocity.y);	
 	}
 
@@ -103,14 +104,17 @@ public class PlayerControl : MonoBehaviour {
             return false;
         }
     }
-
+    
 	void OnCollisionEnter2D(Collision2D collider){
-		grounded = true;
+        //if (collider.gameObject.tag == "Ground" || collider.gameObject.tag == "Hat" || collider.gameObject.tag == "Chair" || collider.gameObject.tag == "Table")        
+            grounded = true;
+        
 	}
 
 	void OnCollisionExit2D(Collision2D collider){
 		grounded = false;
 	}
+
 
 
 

@@ -11,9 +11,9 @@ GameObject:
   - 212: {fileID: 21222214}
   - 60: {fileID: 6058584}
   - 50: {fileID: 5079714}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: bigHat
-  m_TagString: Untagged
+  m_TagString: Hat
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -171,6 +171,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Mass
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_TagString
+      value: Hat
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

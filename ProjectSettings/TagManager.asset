@@ -10,6 +10,7 @@ TagManager:
   - Ground
   - EnemyEyes
   - Table
+  - Chair
   layers:
   - Default
   - TransparentFX
