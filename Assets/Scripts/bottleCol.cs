@@ -2,23 +2,15 @@
 using System.Collections;
 
 public class bottleCol : MonoBehaviour {
-	private AudioSource bottleSound;
 
-
+    private GameObject audioObj;
 	// Use this for initialization
 	void Start () {
-		GameObject audio = GameObject.FindGameObjectWithTag("Mechanics");
-	
-		bottleSound = audio.transform.Find("Sounds/bottles").GetComponent<AudioSource>();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+		audioObj = GameObject.FindGameObjectWithTag("Mechanics").transform.Find("Sounds/bottles").gameObject;	
 	}
 
 	void OnCollisionEnter2D(Collision2D collider){
-		bottleSound.Play();
+        audioObj.GetComponent<TimedAudio>().Play();
 
 	}
 

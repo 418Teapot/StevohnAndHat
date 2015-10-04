@@ -69,7 +69,7 @@ public class PlayerControl : MonoBehaviour {
             facingLeft = false;
         }
 
-        if(horizontalMove == 0 && Input.GetButtonDown("Dance"))
+        if(horizontalMove == 0 && Input.GetButton("Dance"))
         {
             dancing = true;
             anim.SetBool("Dancing", dancing);

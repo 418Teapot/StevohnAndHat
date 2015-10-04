@@ -3894,9 +3894,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1105301115}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4ae4c9e86bd8479f92720b05932a000, type: 3}
+  m_Script: {fileID: 11500000, guid: cc6ba5e232ee3ac408a7f5b22d807d48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeOut: 2
 --- !u!82 &1105301117
 AudioSource:
   m_ObjectHideFlags: 0
