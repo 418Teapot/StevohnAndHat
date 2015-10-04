@@ -9,6 +9,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 471226}
   - 50: {fileID: 5014450}
+  - 114: {fileID: 11479822}
+  - 58: {fileID: 5845776}
   m_Layer: 0
   m_Name: HatProjectile
   m_TagString: Untagged
@@ -40,7 +42,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 122462}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.72305322, y: 3.78412914, z: 17.4765625}
+  m_LocalPosition: {x: .515732646, y: 4.77503729, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 499598}
@@ -52,8 +54,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 143146}
-  m_LocalRotation: {x: 0, y: 0, z: -.167953581, w: .985794961}
-  m_LocalPosition: {x: -.11656642, y: -3.25220656, z: -17.4765625}
+  m_LocalRotation: {x: 0, y: 0, z: .523762941, w: .8518641}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.08643091, y: 1.08643091, z: 1.08643091}
   m_Children: []
   m_Father: {fileID: 471226}
@@ -74,6 +76,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!58 &5845776
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 122462}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: .5
 --- !u!95 &9564322
 Animator:
   serializedVersion: 3
@@ -91,6 +106,19 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11479822
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 122462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d9ea529808f9c24f9057edd1cdb37b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathParticles: {fileID: 118164, guid: 70238d9ebb05bfb44a5d3374fe5d3dd1, type: 2}
+  damage: 10
 --- !u!212 &21226878
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -123,7 +151,23 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: deathParticles
+      value: 
+      objectReference: {fileID: 118164, guid: 70238d9ebb05bfb44a5d3374fe5d3dd1, type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: damage
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 122462}
