@@ -85,6 +85,33 @@ NavMeshSettings:
     cellSize: .166666672
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &89955820
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 89955821}
+  m_Layer: 0
+  m_Name: HatMuzzle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &89955821
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 89955820}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -.330000013, y: 2.33999991, z: 17.4765625}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 730224326}
+  m_RootOrder: 7
 --- !u!1 &120269829
 GameObject:
   m_ObjectHideFlags: 0
@@ -628,6 +655,7 @@ GameObject:
   - 58: {fileID: 730224330}
   - 114: {fileID: 730224332}
   - 50: {fileID: 730224331}
+  - 114: {fileID: 730224333}
   m_Layer: 0
   m_Name: Stevohn
   m_TagString: Player
@@ -652,6 +680,7 @@ Transform:
   - {fileID: 1087933366}
   - {fileID: 1178763955}
   - {fileID: 308135439}
+  - {fileID: 89955821}
   m_Father: {fileID: 0}
   m_RootOrder: 3
 --- !u!95 &730224327
@@ -753,6 +782,20 @@ MonoBehaviour:
   moveSpeed: 15
   jumpForce: 500
   wiimoteEnabled: 0
+--- !u!114 &730224333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 730224325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43f50b9caa5bf3140896c238b2e69f8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hat: {fileID: 122462, guid: 093ee7c2a56bad9449117998e1acc707, type: 2}
+  muzzlePoint: {fileID: 89955821}
+  force: 10000
 --- !u!1 &748073621
 GameObject:
   m_ObjectHideFlags: 0
