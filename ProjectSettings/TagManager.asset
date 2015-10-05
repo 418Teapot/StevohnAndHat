@@ -11,6 +11,10 @@ TagManager:
   - EnemyEyes
   - Table
   - Chair
+  - ScoreText
+  - TablesText
+  - WinText
+  - AnyBtnTryAgain
   layers:
   - Default
   - TransparentFX
@@ -47,4 +51,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Text
+    uniqueID: 412039547
     locked: 0
