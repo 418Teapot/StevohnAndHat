@@ -96,6 +96,7 @@ GameObject:
   - 114: {fileID: 11410800}
   - 114: {fileID: 11432658}
   - 82: {fileID: 8271854}
+  - 61: {fileID: 6156102}
   m_Layer: 9
   m_Name: Stevohn
   m_TagString: Player
@@ -113,6 +114,21 @@ GameObject:
   - 4: {fileID: 483778}
   m_Layer: 9
   m_Name: HatMuzzle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &147278
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 491366}
+  m_Layer: 9
+  m_Name: groundCheckR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -145,6 +161,21 @@ GameObject:
   - 212: {fileID: 21282632}
   m_Layer: 9
   m_Name: Foot1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &174552
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 431368}
+  m_Layer: 9
+  m_Name: groundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -198,6 +229,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &190812
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 470088}
+  m_Layer: 9
+  m_Name: groundCheckL
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!4 &400160
 Transform:
   m_ObjectHideFlags: 1
@@ -234,6 +280,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 448346}
   m_RootOrder: 1
+--- !u!4 &431368
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 174552}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -1.99000001, z: 0}
+  m_LocalScale: {x: .5, y: .5, z: .5}
+  m_Children: []
+  m_Father: {fileID: 496992}
+  m_RootOrder: 9
 --- !u!4 &433640
 Transform:
   m_ObjectHideFlags: 1
@@ -272,6 +330,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 496992}
   m_RootOrder: 3
+--- !u!4 &470088
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 190812}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1, y: -1.99000001, z: 0}
+  m_LocalScale: {x: .5, y: .5, z: .5}
+  m_Children: []
+  m_Father: {fileID: 496992}
+  m_RootOrder: 10
 --- !u!4 &473548
 Transform:
   m_ObjectHideFlags: 1
@@ -308,6 +378,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 496992}
   m_RootOrder: 5
+--- !u!4 &491366
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 147278}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1, y: -1.99000001, z: 0}
+  m_LocalScale: {x: .5, y: .5, z: .5}
+  m_Children: []
+  m_Father: {fileID: 496992}
+  m_RootOrder: 11
 --- !u!4 &491794
 Transform:
   m_ObjectHideFlags: 1
@@ -339,7 +421,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 140472}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -4.94089317, y: -1.18352437, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 491794}
@@ -351,6 +433,9 @@ Transform:
   - {fileID: 473548}
   - {fileID: 483778}
   - {fileID: 448346}
+  - {fileID: 431368}
+  - {fileID: 470088}
+  - {fileID: 491366}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!50 &5006608
@@ -375,15 +460,28 @@ CircleCollider2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 140472}
-  m_Enabled: 1
+  m_Enabled: 0
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: .119999997, y: -1.05999994}
+  serializedVersion: 2
+  m_Radius: .949999988
+--- !u!58 &5891966
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 140472}
+  m_Enabled: 0
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: -.5}
+  m_Offset: {x: .400000006, y: 1.29999995}
   serializedVersion: 2
   m_Radius: 1
---- !u!58 &5891966
-CircleCollider2D:
+--- !u!61 &6156102
+BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -392,9 +490,9 @@ CircleCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: .400000006, y: 1.29999995}
+  m_Offset: {x: .0570092201, y: .371244431}
   serializedVersion: 2
-  m_Radius: 1
+  m_Size: {x: 1.34205496, y: 3.62379074}
 --- !u!82 &8256282
 AudioSource:
   m_ObjectHideFlags: 1
@@ -639,7 +737,7 @@ MonoBehaviour:
   realHat: {fileID: 137224}
   bigHatParicles: {fileID: 138624, guid: 8326692d79edc394091d3a6dc31cd44d, type: 2}
   hatParticles: {fileID: 132002, guid: 48ddcf082ab3b35498e3b09903fdb77d, type: 2}
-  force: 2500
+  force: 20000
   lifeTime: 2.5
   largeHatTime: 2.5
 --- !u!114 &11432658
@@ -668,7 +766,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 15
-  jumpForce: 750
+  jumpForce: 800
   wiimoteEnabled: 0
 --- !u!212 &21209162
 SpriteRenderer:

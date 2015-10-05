@@ -12,6 +12,8 @@ public class PlayerControl : MonoBehaviour {
     public bool wiimoteEnabled = false;
     private int jumpCount = 0;
 	private bool grounded = true;
+    private bool groundL = true;
+    private bool groundR = true;
 
     private WiiMoteInputReader wiiInput;
 
@@ -35,7 +37,10 @@ public class PlayerControl : MonoBehaviour {
     }
 
 	void FixedUpdate(){
-        //grounded = Physics2D.Linecast(transform.position, transform.Find("groundCheck").transform.position, 1 << LayerMask.NameToLayer("Ground"));
+        grounded = Physics2D.Linecast(transform.position, transform.Find("groundCheck").transform.position, 1 << LayerMask.NameToLayer("Ground"));
+        groundR = Physics2D.Linecast(transform.position, transform.Find("groundCheckR").transform.position, 1 << LayerMask.NameToLayer("Ground"));
+        groundL = Physics2D.Linecast(transform.position, transform.Find("groundCheckL").transform.position, 1 << LayerMask.NameToLayer("Ground"));
+
         //Debug.Log("Grnd: " + grounded);
         float horizontalMove;
 
@@ -43,21 +48,51 @@ public class PlayerControl : MonoBehaviour {
             horizontalMove = wiiInput.getX();
             anim.SetFloat("WalkSpeed", Mathf.Abs(horizontalMove));
 
-          	if(wiiInput.getJump() > 0 && grounded)
-			{
-                rigid.AddForce(Vector2.up * jumpForce);
-                Debug.Log("Jump "+jumpCount);
+            if (Input.GetButtonDown("Jump"))
+            {
+                if (grounded || groundR || groundL) //stupid hax/fix fordi vores ting er skod - eller noget!
+                {
+                    rigid.AddForce(Vector2.up * jumpForce);
+                    Debug.Log("Jump " + jumpCount);
+                }
             }
+
+            if (horizontalMove == 0 && Input.GetButton("Dance"))
+            {
+                dancing = true;
+                anim.SetBool("Dancing", dancing);
+            }
+            else
+            {
+                dancing = false;
+                anim.SetBool("Dancing", dancing);
+            }
+
 
         } else {
 			//If wiiMote isn't enabled, and you want to controle with keyboard.
             horizontalMove = Input.GetAxis("Horizontal");
             anim.SetFloat("WalkSpeed", Mathf.Abs(horizontalMove));
 
-			if(Input.GetButtonDown("Jump") && grounded){
-				rigid.AddForce(Vector2.up * jumpForce);
-				Debug.Log("Jump "+jumpCount);
+			if(Input.GetButtonDown("Jump")){
+                if (grounded || groundR || groundL) //stupid hax/fix fordi vores ting er skod - eller noget!
+                {
+                    rigid.AddForce(Vector2.up * jumpForce);
+                    Debug.Log("Jump " + jumpCount);
+                }
 			}
+
+            if (horizontalMove == 0 && Input.GetButton("Dance"))
+            {
+                dancing = true;
+                anim.SetBool("Dancing", dancing);
+            }
+            else
+            {
+                dancing = false;
+                anim.SetBool("Dancing", dancing);
+            }
+
         }
 
         if(horizontalMove < 0 && !facingLeft){
@@ -70,15 +105,7 @@ public class PlayerControl : MonoBehaviour {
             facingLeft = false;
         }
 
-        if(horizontalMove == 0 && Input.GetButton("Dance"))
-        {
-            dancing = true;
-            anim.SetBool("Dancing", dancing);
-        } else
-        {
-            dancing = false;
-            anim.SetBool("Dancing", dancing);
-        }
+       
 
         /*if(horizontalMove > 0){
 			Vector3 scale = transform.localScale;
@@ -104,16 +131,16 @@ public class PlayerControl : MonoBehaviour {
             return false;
         }
     }
-    
-	void OnCollisionEnter2D(Collision2D collider){
-        //if (collider.gameObject.tag == "Ground" || collider.gameObject.tag == "Hat" || collider.gameObject.tag == "Chair" || collider.gameObject.tag == "Table")        
+    /*
+	void OnTriggerEnter2D(Collider2D collider){
+        //if (collider.tag == "Ground" || collider.tag == "Hat" || collider.tag == "Chair" || collider.tag == "Table")        
             grounded = true;
         
 	}
 
-	void OnCollisionExit2D(Collision2D collider){
+	void OnTriggerExit2D(Collider2D collider){
 		grounded = false;
-	}
+	}*/
 
 
 

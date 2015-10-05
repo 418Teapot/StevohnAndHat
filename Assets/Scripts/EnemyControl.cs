@@ -100,7 +100,7 @@ public class EnemyControl : MonoBehaviour
         else Chase();
 
         //grow big and mean when catching player: ... Useless? probably...
-        if (vectorTowardsPlayer.magnitude < 0.5f) enemyModel.localScale = startingSize * 3;//, rigid.transform.lossyScale.y * 5);
+        //if (vectorTowardsPlayer.magnitude < 0.5f) enemyModel.localScale = startingSize * 3;//, rigid.transform.lossyScale.y * 5);
         //else if (vectorTowardsPlayer.magnitude > 5) startingSize = enemyModel.localScale;
 
         //face direction of movement:

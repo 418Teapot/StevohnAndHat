@@ -7,7 +7,8 @@ public class WiiMoteInputReader : MonoBehaviour {
 
     float nunchukX;
     float nunchukY;
-    float wiimoteA;
+    float wiimoteA;    
+    int nrOfJumps = 0;
 
 	void Start () {
 
@@ -21,12 +22,25 @@ public class WiiMoteInputReader : MonoBehaviour {
         nunchukX = mote.NUNCHUK_JOY_X;
         nunchukY = mote.NUNCHUK_JOY_Y;
 
-        wiimoteA = mote.BUTTON_A;
+        if (nunchukX < 0.01f && nunchukX > 0.0f)
+        {
+            nunchukX = 0.0f;
+        }
+        if (nunchukX > -0.01f && nunchukX < 0.0f)
+        {
+            nunchukX = 0.0f;
+        }
+
+        if (nunchukY < 0.01f)
+        {
+            nunchukY = 0.0f;
+        }
 
         Debug.Log(nunchukX + ", " + nunchukY);        
 	}
 
+
     public float getX() { return nunchukX; }
     public float getY() { return nunchukY; }
-    public float getJump() { return wiimoteA; }
+    
 }
