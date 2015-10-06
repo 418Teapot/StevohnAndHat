@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 public class Mechanics : MonoBehaviour {
 	private int numberOfTables = 0;
@@ -7,6 +8,7 @@ public class Mechanics : MonoBehaviour {
     public bool fakeWin = false;
     private int score = 0;
     private int tablesCount = 0;
+    private bool uploadScores = true;
 
 	// Use this for initialization
 	void Start () {
@@ -15,7 +17,8 @@ public class Mechanics : MonoBehaviour {
 		Debug.Log ("Tables" + numberOfTables);
         GameObject.FindWithTag("TablesText").GetComponent<Text>().text = "Tables Left: " + tablesCount;
     }
-	
+	    
+
 	// Update is called once per frame
 	void Update () {
 		if(numberOfTables <= winZone.GetComponent<winCounter>().Tables() || fakeWin){
@@ -34,6 +37,9 @@ public class Mechanics : MonoBehaviour {
                 bc.enabled = false;
             }
 
+            // update scores på serveren            
+            StartCoroutine(putHighscores(score));
+
             if (Input.GetButtonDown("Jump")){
                 Application.LoadLevel(Application.loadedLevel);
             }
@@ -45,6 +51,22 @@ public class Mechanics : MonoBehaviour {
             GameObject.FindWithTag("AnyBtnTryAgain").GetComponent<Text>().enabled = false;
         }
 	}
+
+    IEnumerator putHighscores(int scores)
+    {
+        if (uploadScores)
+        {
+            uploadScores = false;
+            WWW web = new WWW("http://46.101.251.99/stevohn/highscores.php?a=set&n=stevohn&s=" + scores);
+            yield return web;
+            if (web.text == "NEWHS")
+            {
+                Debug.Log("New Highscore");
+                GameObject.FindWithTag("HsText").GetComponent<Text>().enabled = true;
+            }
+            StopAllCoroutines(); //only run once :)
+        }
+    }
 
     public int GetScore()
     {

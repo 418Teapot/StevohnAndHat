@@ -15,6 +15,9 @@ TagManager:
   - TablesText
   - WinText
   - AnyBtnTryAgain
+  - HsText
+  - LogoGfx
+  - HsBtn
   layers:
   - Default
   - TransparentFX
