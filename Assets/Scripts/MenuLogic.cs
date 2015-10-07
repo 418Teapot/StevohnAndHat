@@ -19,6 +19,7 @@ public class MenuLogic : MonoBehaviour {
     void Start()
     {
         logo = GameObject.FindWithTag("LogoGfx");
+        GameObject.FindWithTag("HsBtn").GetComponentInChildren<Text>().text = "Highscores"; // stupid positional fix (apparently setting the text changes its position!)
     }
 
     void Update()
@@ -51,6 +52,7 @@ public class MenuLogic : MonoBehaviour {
             showingScores = false;
             logo.SetActive(true);
             GameObject.FindWithTag("HsBtn").GetComponentInChildren<Text>().text = "Highscores";
+            GameObject.FindWithTag("HsText").GetComponent<Text>().enabled = false;
         }
     }
     

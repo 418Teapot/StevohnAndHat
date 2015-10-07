@@ -1,0 +1,108 @@
+﻿var.Bat = Wiimote1.Battery //Shows remaining battery level.
+Wiimote.Led1 = True // If GlovePie finds the Wiimote - LED1 on the wiimote will light up permanently - LED4 will also light up if button B is held down.
+Wiimote.Led2 = false
+Wiimote.Led3 = FALSE
+if Wiimote1.HasNunchuck == TRUE
+   Wiimote.Led4 = TRUE
+elseif WiiMote1.HasNunchuck == FALSE
+   Wiimote.Led4 = FALSE
+endif
+
+OSC1.ip = 127,0,0,1              //OSC sends the data to the pc that glovepie is running on
+OSC1.port = 6050		// to the port 6050 (remember to change it both here and in the WiimoteReciver script if you use a different port).
+
+var.Zdwn = Wiimote1.Nunchuk.ZButton
+Debug = "Wiimote Battery Lvl: "+var.Bat+" Accel: "+Wiimote1.RawAcc
+
+//The following sets the state of the diff. buttons into variables
+Var.Up = float(Wiimote.Up)
+Var.Down = float(Wiimote.Down)
+Var.Left = float(Wiimote.Left)
+Var.Right = float(Wiimote.Right)
+Var.Minus = float(Wiimote.Minus)
+Var.Plus = float(Wiimote.Plus)
+Var.Home = float(Wiimote.Home)
+Var.One = float(Wiimote.One)
+Var.Two = float(Wiimote.Two)
+Var.Roll = float(Wiimote.Roll)
+Var.Pitch = float(Wiimote.Pitch)
+Var.WiiX = float(Wiimote.SmoothPointerX)
+Var.WiiY = float(Wiimote.SmoothPointerY)
+Var.WiiZ = float(Wiimote.z)
+var.A = float(Wiimote1.A)
+var.B = float(Wiimote1.B)
+
+//Key.Space = Var.NunchuckZ
+
+// nunchuck support
+
+Var.NunchukZ = float(Wiimote1.Nunchuk.Z)
+Var.NunchukC = float(Wiimote1.Nunchuk.C)
+Var.NunchukJoyX = float(Wiimote1.Nunchuk.JoyX)
+Var.NunchukJoyY = float(Wiimote1.Nunchuk.JoyY)
+
+
+//Here the data is sendt out, each sentence sends out a 1 if the corresponding button is pressed and 0 if its not pressed.
+//Not all the buttons are used below (that are made into variables above) - however it should be clear how to expand the script
+//from the parts above.
+
+
+if var.A == 1
+   SendOSC(OSC1.ip, OSC1.port, "/wii/1/button/A", 1.0)
+elseif (var.A == 0)
+   SendOSC(OSC1.ip, OSC1.port, "/wii/1/button/A", 0.0)
+endif
+if var.B == 1
+   SendOSC(OSC1.ip, OSC1.port, "/wii/1/button/B", 1.0)
+elseif (var.B == 0)
+   SendOSC(OSC1.ip, OSC1.port, "/wii/1/button/B", 0.0)
+endif
+if var.Up == 1
+   SendOSC(OSC1.ip, OSC1.port, "/wii/1/button/Up", 1.0)
+elseif (var.Up == 0)
+   SendOSC(OSC1.ip, OSC1.port, "/wii/1/button/Up", 0.0)
+endif
+if var.Left == 1
+   SendOSC(OSC1.ip, OSC1.port, "/wii/1/button/Left", 1.0)
+elseif (var.Left == 0)
+   SendOSC(OSC1.ip, OSC1.port, "/wii/1/button/Left", 0.0)
+endif
+if var.Right == 1
+   SendOSC(OSC1.ip, OSC1.port, "/wii/1/button/Right", 1.0)
+elseif (var.Right == 0)
+   SendOSC(OSC1.ip, OSC1.port, "/wii/1/button/Right", 0.0)
+endif
+if var.Down == 1
+   SendOSC(OSC1.ip, OSC1.port, "/wii/1/button/Down", 1.0)
+elseif (var.Down == 0)
+   SendOSC(OSC1.ip, OSC1.port, "/wii/1/button/Down", 0.0)
+endif
+if var.Plus == 1
+   SendOSC(OSC1.ip, OSC1.port, "/wii/1/button/Plus", 1.0)
+elseif (var.Plus == 0)
+   SendOSC(OSC1.ip, OSC1.port, "/wii/1/button/Plus", 0.0)
+endif
+if var.Minus == 1
+   SendOSC(OSC1.ip, OSC1.port, "/wii/1/button/Minus", 1.0)
+elseif (var.Minus == 0)
+   SendOSC(OSC1.ip, OSC1.port, "/wii/1/button/Minus", 0.0)
+endif
+if var.One == 1
+   SendOSC(OSC1.ip, OSC1.port, "/wii/1/button/1", 1.0)
+elseif (var.One == 0)
+   SendOSC(OSC1.ip, OSC1.port, "/wii/1/button/1", 0.0)
+endif
+if var.Two == 1
+   SendOSC(OSC1.ip, OSC1.port, "/wii/1/button/2", 1.0)
+elseif (var.Two == 0)
+   SendOSC(OSC1.ip, OSC1.port, "/wii/1/button/2", 0.0)
+endif
+                                 */
+//These last two sends out the Pitch/Roll (tilting it and moving it up and down) + the sensorbar movement (e.g. Depth)
+SendOSC(OSC1.ip, OSC1.port, "/wii/1/accel/pry", var.Pitch, var.Roll, 0)
+SendOSC(OSC1.ip,OSC1.port,"/wii/1/accel/xyz", var.WiiX, var.WiiY, var.WiiZ)
+SendOSC(OSC1.ip,OSC1.port,"/wii/1/nunchuk/joy", var.NunchukJoyX, var.NunchukJoyY)
+
+
+Key.Space = Wiimote1.Nunchuk.Z
+Key.LeftShift = Wiimote1.Nunchuk.C
